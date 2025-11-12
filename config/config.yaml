@@ -1,0 +1,10 @@
+storagePath: ../storage/sqlite/storage.db # default ../storage/sqlite/storage.db
+logPath: ../logs/logs.log # "false" to use only stdout default ../logs/logs.log
+logLevel: debug # default debug, must be debug, info, warn, error
+logLifetime: 7 # in days, must be integer, leave negative to disable clearing logs
+server:
+  address: localhost:8080 # default localhost:8080
+  timeout: 4 # in seconds, default 4s, must be integer
+  idleTimeout: 45 # in seconds, default 45s, must be integer
+  user: admin # default admin
+  password: admin # default admin

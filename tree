@@ -1,0 +1,33 @@
+📦URLshortener
+ ┣ 📂cmd
+ ┃ ┗ 📜main.go
+ ┣ 📂config
+ ┃ ┣ 📜config.go
+ ┃ ┗ 📜config.yaml
+ ┣ 📂internal
+ ┃ ┣ 📂logs
+ ┃ ┃ ┣ 📜init_slog.go
+ ┃ ┃ ┗ 📜stop_slog.go
+ ┃ ┣ 📂server
+ ┃ ┃ ┣ 📂handlers
+ ┃ ┃ ┃ ┣ 📜alias_handlers.go
+ ┃ ┃ ┃ ┣ 📜redirect_handlers.go
+ ┃ ┃ ┃ ┗ 📜sender.go
+ ┃ ┃ ┗ 📂mw_components
+ ┃ ┃ ┃ ┗ 📜logger.go
+ ┃ ┗ 📂storage
+ ┃ ┃ ┣ 📜delete_url.go
+ ┃ ┃ ┣ 📜entity.go
+ ┃ ┃ ┣ 📜get_url.go
+ ┃ ┃ ┣ 📜save_url.go
+ ┃ ┃ ┗ 📜setup_storage.go
+ ┣ 📂logs
+ ┃ ┣ 📜 <some log files>.log
+ ┣ 📂storage
+ ┃ ┗ 📂sqlite
+ ┃ ┃ ┗ 📜storage.db
+ ┣ 📜.gitignore
+ ┣ 📜LICENSE
+ ┣ 📜README.md
+ ┣ 📜go.mod
+ ┗ 📜go.sum
