@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"os"
 	"os/signal"
@@ -25,23 +24,21 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(config)
-
 	logger, logFile := logs.Init(config.LogPath, config.LogLevel)
 	logger.Info("starting url shortener")
 	start_date := time.Now()
 	defer func() {
 		logFile.Close()
-		logs.Stop(logger, config.LogPath, start_date)
 	}()
 
-	db, err := storage.SetupStorage(config.StoragePath)
+	db, err := storage.SetupStorage(config.Storage.Path)
 	if err != nil {
-		logger.Error("could not setup storage", "error", err)
+		logger.Error("could not setup storage", "storage config: ",config.Storage, "error", err)
+		panic(err)
 	}
 	defer db.Database.Close()
 
-	logger.Info("initializing server", "adress", config.Server.Adress)
+	logger.Info("initializing server", "adress", config.Server.Address)
 
 	router := chi.NewRouter()
 	router.Use(mw_components.InitLoggerMiddleware(logger))
@@ -57,7 +54,7 @@ func main() {
 	})
 
 	server := &http.Server{
-		Addr:         config.Server.Adress,
+		Addr:         config.Server.Address,
 		Handler:      router,
 		ReadTimeout:  time.Duration(config.Server.Timeout) * time.Second,
 		WriteTimeout: time.Duration(config.Server.Timeout) * time.Second,

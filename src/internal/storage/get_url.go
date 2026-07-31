@@ -10,7 +10,7 @@ func (db *Storage) GetUrl(alias string) (string, int8, error) {
 
 	var url string
 
-	err := db.Database.QueryRow("SELECT url FROM urls WHERE alias = ?", alias).Scan(&url)
+	err := db.Database.QueryRow("SELECT url FROM urls WHERE alias = $1", alias).Scan(&url)
 
 	if err != nil {
 		if err == sql.ErrNoRows {

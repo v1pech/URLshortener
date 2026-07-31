@@ -1,0 +1,5 @@
+logPath: ./logs.log # "false" to use only stdout default ../logs/logs.log
+server:
+  address: :80 # default localhost:80
+  timeout: 4 # in seconds, default 4s, must be integer
+  idleTimeout: 45 # in seconds, default 45s, must be integer
